@@ -30,6 +30,8 @@ This project is a starting point for a Flutter application.
 
 ### how to do
 
-1. modify something
+1. modify text
    - modify text in the ``title: ` or `Text( )`
-   - modify icon through searching icon class!
+2. modify icons
+   - search the icon in icon class
+   - and modify icon name
