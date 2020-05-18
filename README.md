@@ -11,7 +11,8 @@ This project is a starting point for a Flutter application.
 - [x] install
 - [x] flutter run
 - [x] modify text
-- [x] change icon 
+- [x] change icon
+- [x] bottom navigation bar
 
 ### Installation
 
@@ -23,7 +24,7 @@ This project is a starting point for a Flutter application.
      1. install flutter plugin
      2. android simulator run
      3. build
-  
+
    - ios
      1. `open -a Simulator`
      2. `flutter run`
