@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/tab1.dart';
+import 'package:flutter_study/tab2.dart';
+import 'package:flutter_study/tab3.dart';
 
 void main() {
   runApp(MyApp());
@@ -29,24 +32,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  int _selectedIndex = 0;
+  static int _counter = 0;
+  int _selectedIndex;
 
-  static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Text(
-      'Home Page',
-      style: optionStyle
-    ),
-    Text(
-      'Second Page',
-      style: optionStyle
-    ),
-    Text(
-      'Third Page',
-      style: optionStyle
-    ),
-  ];
+  Tab1 tab1;
+  Tab2 tab2;
+  Tab3 tab3;
+  List<Widget> pages;
+  static TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  @override
+  void initState() {
+    _selectedIndex = 0;
+    tab1 = Tab1();
+    tab2 = Tab2();
+    tab3 = Tab3();
+
+    pages = [tab1, tab2, tab3];
+    super.initState();
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -66,10 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child:
-        _widgetOptions.elementAt(_selectedIndex)
-      ),
+      body: pages[_selectedIndex],
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
@@ -78,26 +79,28 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          BottomNavigationBarItem(icon: Icon(Icons.send), title: Text('Second')),
-          BottomNavigationBarItem(icon: Icon(Icons.search), title: Text('Third'))
-      ],
-      currentIndex: _selectedIndex,
-      selectedItemColor: Colors.amber,
-      onTap: _onItemTapped,
+          BottomNavigationBarItem(
+              icon: Icon(Icons.send), title: Text('Second')),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.search), title: Text('Third'))
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber,
+        onTap: _onItemTapped,
       ),
     );
   }
 }
 
-        // Column(
-        //   mainAxisAlignment: MainAxisAlignment.center,
-        //   children: <Widget>[
-        //     Text(
-        //       'push plus!',
-        //     ),
-        //     Text(
-        //       '$_counter',
-        //       style: Theme.of(context).textTheme.headline4,
-        //     ),
-        //   ],
-        // ),
+// Column(
+//   mainAxisAlignment: MainAxisAlignment.center,
+//   children: <Widget>[
+//     Text(
+//       'push plus!',
+//     ),
+//     Text(
+//       '$_counter',
+//       style: Theme.of(context).textTheme.headline4,
+//     ),
+//   ],
+// ),
